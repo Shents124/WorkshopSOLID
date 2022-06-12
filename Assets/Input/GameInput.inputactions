@@ -1,0 +1,116 @@
+{
+    "name": "GameInput",
+    "maps": [
+        {
+            "name": "PlayerController",
+            "id": "0f413013-a505-4300-8d88-e8029b516fd6",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "1d3db049-ff82-4488-8063-1019ac64d941",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "NormalAttack",
+                    "type": "Button",
+                    "id": "978e39f6-bfb3-4442-b5f7-f886f380607a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Skill_1",
+                    "type": "Button",
+                    "id": "5be4e546-96ff-4c29-972c-95bcde0a8bb4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skill_2",
+                    "type": "Button",
+                    "id": "5bd49246-b080-46c9-8c2f-bb1efe1d7016",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "0c45f2ea-290b-4c1e-a3a1-5231732b9a81",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "35ec1f84-b9d3-46d3-9450-3c0625637247",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "8c6590d6-ebe0-4364-bd22-93e912e7b6c6",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f19e0635-d3e3-469d-8da6-09e5af997b4e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NormalAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05d4b8c2-b5d4-49a6-9633-f571b678672a",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9719c03a-f129-4894-9c63-39460ffca57f",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
