@@ -15,6 +15,7 @@ public class IsNormalAttackSO : StateConditionSO
 public class IsNormalAttack : Condition
 {
     private PlayerInputController _playerInputController;
+    
     public override void Awake(StateMachine.Core.StateMachine stateMachine)
     {
         _playerInputController = stateMachine.GetComponent<PlayerInputController>();

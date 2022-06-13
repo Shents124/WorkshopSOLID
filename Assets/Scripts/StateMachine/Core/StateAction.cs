@@ -9,7 +9,7 @@ namespace StateMachine.Core
         protected StateActionSO OriginSO => originSO;
 
         public abstract void OnUpdate();
-
+        public abstract void OnFixedUpdate();
         public virtual void Awake(StateMachine stateMachine) { }
 
         public virtual void OnEnterState() { }

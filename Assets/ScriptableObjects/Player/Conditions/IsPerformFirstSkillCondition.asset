@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79eec42d77f546e4b8424065ded820f9, type: 3}
-  m_Name: SetIdleAnimation
+  m_Script: {fileID: 11500000, guid: 97e615ef2e2e432c8bab2ea6c61f47e3, type: 3}
+  m_Name: IsPerformFirstSkillCondition
   m_EditorClassIdentifier: 
-  parameterType: 0
-  parameterName: 
-  boolValue: 0
-  intValue: 0
-  floatValue: 0
-  whenToRun: 1

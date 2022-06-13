@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95edd122ce9540c98aac3f1cf5c90489, type: 3}
-  m_Name: Idle
+  m_Script: {fileID: 11500000, guid: d0283d9b7f954af8aa7a0ea0585989e4, type: 3}
+  m_Name: StopMovementAction
   m_EditorClassIdentifier: 
-  action:
-  - {fileID: 11400000, guid: 5a7732d2a288e8f4f93bc28b3f79e52d, type: 2}
+  _moment: 0

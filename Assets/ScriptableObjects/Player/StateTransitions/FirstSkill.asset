@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4582c7b02ff43fc9fe0778a780233a4, type: 3}
+  m_Name: FirstSkill
+  m_EditorClassIdentifier: 
+  fromState: {fileID: 11400000, guid: 3519283141b9b204fb25984fd027df02, type: 2}
+  transitionItems:
+  - toState: {fileID: 11400000, guid: db845fdd879a3d046bfc82837289981f, type: 2}
+    conditions:
+    - expectedResult: 1
+      condition: {fileID: 11400000, guid: ed1df92229acd294685f420bb648ab28, type: 2}
+      operatorCondition: 0
+    - expectedResult: 1
+      condition: {fileID: 11400000, guid: cfc1e92835f767a4d94746a8cb81aa86, type: 2}
+      operatorCondition: 0
+  - toState: {fileID: 11400000, guid: 5099692be800ee9478c1e4cd26022908, type: 2}
+    conditions:
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: cfc1e92835f767a4d94746a8cb81aa86, type: 2}
+      operatorCondition: 0
+    - expectedResult: 1
+      condition: {fileID: 11400000, guid: ed1df92229acd294685f420bb648ab28, type: 2}
+      operatorCondition: 0

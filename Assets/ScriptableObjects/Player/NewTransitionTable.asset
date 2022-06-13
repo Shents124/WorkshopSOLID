@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: NewTransitionTable
   m_EditorClassIdentifier: 
   transitionItems:
-  - fromState: {fileID: 11400000, guid: db845fdd879a3d046bfc82837289981f, type: 2}
-    toState: {fileID: 11400000, guid: 3519283141b9b204fb25984fd027df02, type: 2}
-    conditions:
-    - expectedResult: 0
-      condition: {fileID: 11400000, guid: f2bfa695b194415438ab9b629f0fb64b, type: 2}
-      operatorCondition: 1
+  - {fileID: 11400000, guid: ee299580fd629004ca4c3f4a60e73449, type: 2}
+  - {fileID: 11400000, guid: a1ea76e2ffd7adc40bba020288584bdd, type: 2}
+  - {fileID: 11400000, guid: 6f859c7cfd3af1448848a5cb996eb270, type: 2}
+  - {fileID: 11400000, guid: 7b067b318f42e604e86f670123d3e74c, type: 2}

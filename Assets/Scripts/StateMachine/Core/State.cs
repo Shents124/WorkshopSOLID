@@ -38,6 +38,14 @@ namespace StateMachine.Core
             }
         }
 
+        public void OnFixedUpdate()
+        {
+            foreach (var action in _actions)
+            {
+                action.OnFixedUpdate();
+            }
+        }
+
         public void OnStateExit()
         {
             void OnStateExit(IStateComponent[] comps)

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StateMachine.Core
+﻿namespace StateMachine.Core
 {
     public class StateTransition : IStateComponent
     {
@@ -20,7 +18,7 @@ namespace StateMachine.Core
         {
             _targetState = targetState;
             _conditions = conditions;
-            _resultGroups = _resultGroups != null && resultGroups.Length > 0 ? resultGroups : new int [1];
+            _resultGroups = resultGroups != null && resultGroups.Length > 0 ? resultGroups : new int [1];
             _results = new bool[_resultGroups.Length];
         }
 

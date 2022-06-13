@@ -1,5 +1,4 @@
 ﻿using StateMachine.ScriptableObjects;
-using UnityEngine;
 
 namespace StateMachine.Core
 {

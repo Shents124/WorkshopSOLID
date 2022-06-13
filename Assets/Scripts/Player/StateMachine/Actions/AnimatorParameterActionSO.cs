@@ -28,21 +28,30 @@ public class AnimatorParameterActionSO : StateActionSO
 public class AnimatorParameterAction : StateAction
 {
     private Animator _animator;
+    private PlayerController _playerController;
     private AnimatorParameterActionSO _originSO => (AnimatorParameterActionSO)base.OriginSO;
-    private int _parameterHash;
+    private readonly int _parameterHash;
 
     public AnimatorParameterAction(int parameterHash)
     {
         _parameterHash = parameterHash;
     }
-    
+
+    public override void OnFixedUpdate()
+    {
+        
+    }
+
     public override void Awake(StateMachine.Core.StateMachine stateMachine)
     {
         _animator = stateMachine.GetComponent<Animator>();
+        _playerController = stateMachine.GetComponent<PlayerController>();
     }
 
     public override void OnEnterState()
     {
+        _playerController.isDoneAnimation = false;
+        
         if (_originSO.whenToRun == SpecificMoment.OnEnterState)
             SetParameter();
     }

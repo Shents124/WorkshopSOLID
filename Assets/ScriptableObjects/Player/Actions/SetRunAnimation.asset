@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SetRunAnimation
   m_EditorClassIdentifier: 
   parameterType: 0
-  parameterName: 
-  boolValue: 0
+  parameterName: Run
+  boolValue: 1
   intValue: 0
   floatValue: 0
   whenToRun: 0
