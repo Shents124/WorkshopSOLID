@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.StateMachine.Conditions
 {
-    [CreateAssetMenu(fileName = "IsMovingCondition", menuName = "State Machines/Conditions/Is Moving")]
+    [CreateAssetMenu(fileName = "IsMovingCondition", menuName = "State Machines/Player/Conditions/Is Moving")]
     public class IsMovingConditionSO : StateConditionSO
     {
         protected override Condition CreateCondition()

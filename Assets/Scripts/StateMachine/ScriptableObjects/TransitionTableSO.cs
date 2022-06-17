@@ -40,7 +40,7 @@ namespace StateMachine.ScriptableObjects
 
                 state._transitions = transitions.ToArray();
             }
-
+            
             return states.Count > 0
                 ? states[0]
                 : throw new InvalidOperationException($"TransitionTable {name} is empty");

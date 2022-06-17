@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4582c7b02ff43fc9fe0778a780233a4, type: 3}
   m_Name: FirstSkill
   m_EditorClassIdentifier: 
-  fromState: {fileID: 11400000, guid: 3519283141b9b204fb25984fd027df02, type: 2}
+  fromState: {fileID: 11400000, guid: 2c109d7ce7129f446a7faf7909c08a67, type: 2}
   transitionItems:
   - toState: {fileID: 11400000, guid: db845fdd879a3d046bfc82837289981f, type: 2}
     conditions:
@@ -29,4 +29,14 @@ MonoBehaviour:
       operatorCondition: 0
     - expectedResult: 1
       condition: {fileID: 11400000, guid: ed1df92229acd294685f420bb648ab28, type: 2}
+      operatorCondition: 0
+  - toState: {fileID: 11400000, guid: 3519283141b9b204fb25984fd027df02, type: 2}
+    conditions:
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: f2bfa695b194415438ab9b629f0fb64b, type: 2}
+      operatorCondition: 0
+  - toState: {fileID: 11400000, guid: 02038bdb26dd58b40a0362297e50929b, type: 2}
+    conditions:
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: e6f4c608d6306b149a33cb89e105d2ff, type: 2}
       operatorCondition: 0

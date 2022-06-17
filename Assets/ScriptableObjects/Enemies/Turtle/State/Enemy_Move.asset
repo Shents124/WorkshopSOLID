@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95edd122ce9540c98aac3f1cf5c90489, type: 3}
+  m_Name: Enemy_Move
+  m_EditorClassIdentifier: 
+  action:
+  - {fileID: 11400000, guid: 4ad2e66b11c64b643bc18fe59b475c91, type: 2}
+  - {fileID: 11400000, guid: e75341027512f7b47ae6b56b48296589, type: 2}
+  - {fileID: 11400000, guid: ab8a01f06f604b24690615ea0786bd18, type: 2}

@@ -4,47 +4,47 @@ using UnityEngine;
 
 namespace Player.StateMachine.Actions
 {
-    [CreateAssetMenu(fileName = "StopMovementAction", menuName = "State Machines/Actions/Stop Movement Action")]
+    [CreateAssetMenu(fileName = "StopMovementAction", menuName = "State Machines/Player/Actions/Stop Movement Action")]
     public class StopMovementActionSO : StateActionSO
     {
         [SerializeField] private StateAction.SpecificMoment _moment = default;
         public StateAction.SpecificMoment Moment => _moment;
 
-        protected override StateAction CreateAction() => new StopMovement();
+        protected override StateAction CreateAction() => new StopMovementAction();
     }
 
-    public class StopMovement : StateAction
+    public class StopMovementAction : StateAction
     {
-        private PlayerController _playerController;
+        private Rigidbody2D _rb2d;
         private new StopMovementActionSO OriginSO => (StopMovementActionSO)base.OriginSO;
         
         public override void Awake(global::StateMachine.Core.StateMachine stateMachine)
         {
 
-            _playerController = stateMachine.GetComponent<PlayerController>();
+            _rb2d = stateMachine.GetComponent<Rigidbody2D>();
         }
 
         public override void OnEnterState()
         {
-            if(OriginSO.Moment == SpecificMoment.OnEnterState)
-                _playerController.StopMovement();
+            if (OriginSO.Moment == SpecificMoment.OnEnterState)
+                StopMovement();
         }
 
         public override void OnExitState()
         {
             if(OriginSO.Moment == SpecificMoment.OnStateExit)
-                _playerController.StopMovement();
+                StopMovement();;
         }
-
-        public override void OnUpdate()
-        {
-            
-        }
-
+        
         public override void OnFixedUpdate()
         {
             if(OriginSO.Moment == SpecificMoment.OnUpdate)
-                _playerController.StopMovement();
+                StopMovement();
+        }
+
+        private void StopMovement()
+        {
+            _rb2d.velocity = Vector2.zero;
         }
     }
 }

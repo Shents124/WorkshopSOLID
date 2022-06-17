@@ -56,7 +56,7 @@
                 ret = _results[i];
 
             return ret;
-        }
+         }
 
         internal void ClearConditionState()
         {

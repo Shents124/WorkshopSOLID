@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Player.StateMachine.Conditions
 {
-    [CreateAssetMenu(fileName = "IsPerformSecondSkillCondition", menuName = "State Machines/Conditions/Is Perform Second Skill Condition")]
+    [CreateAssetMenu(fileName = "IsPerformSecondSkillCondition", menuName = "State Machines/Player/Conditions/Is Perform Second Skill Condition")]
     public class IsPerformSecondSkillSO : StateConditionSO
     {
         protected override Condition CreateCondition()
         {
-            return new IsPerformFirstSkill();
+            return new IsPerformSecondSkill();
         }
     }
     

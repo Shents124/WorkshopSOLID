@@ -5,32 +5,29 @@ using UnityEngine;
 
 namespace Player.StateMachine.Actions
 {
-    [CreateAssetMenu(fileName = "ApplyMovementVectorAction", menuName = "State Machines/Actions/ApplyMovementVectorAction")]
+    [CreateAssetMenu(fileName = "ApplyMovementVectorAction", menuName = "State Machines/Player/Actions/ApplyMovementVectorAction")]
     public class ApplyMovementVectorActionSO : StateActionSO<ApplyMovementVectorAction>
     {
-        public float speed = 150f;
+        
     }
 
     public class ApplyMovementVectorAction : StateAction
     {
-        private PlayerController _playerController;
+        private PlayerAction _playerAction;
         private PlayerInputController _input;
-        private new ApplyMovementVectorActionSO OriginSO => (ApplyMovementVectorActionSO)base.OriginSO;
+        private PlayerData _playerData;
         
         public override void Awake(global::StateMachine.Core.StateMachine stateMachine)
         {
-            _playerController = stateMachine.GetComponent<PlayerController>();
+            _playerAction = stateMachine.GetComponent<PlayerAction>();
             _input = stateMachine.GetComponent<PlayerInputController>();
+            _playerData = stateMachine.GetComponent<PlayerData>();
         }
 
-        public override void OnUpdate()
-        {
-            
-        }
-
+        
         public override void OnFixedUpdate()
         {
-            _playerController.Move(_input.HorizontalInput, OriginSO.speed);
+            _playerAction.Move(_input.HorizontalInput, _playerData.Speed);
         }
     }
 }

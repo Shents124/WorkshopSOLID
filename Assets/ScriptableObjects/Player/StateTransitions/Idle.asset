@@ -29,3 +29,16 @@ MonoBehaviour:
     - expectedResult: 0
       condition: {fileID: 11400000, guid: ed1df92229acd294685f420bb648ab28, type: 2}
       operatorCondition: 0
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: 2a47a202f30452b4aa5ed860615abe3b, type: 2}
+      operatorCondition: 0
+  - toState: {fileID: 11400000, guid: 02038bdb26dd58b40a0362297e50929b, type: 2}
+    conditions:
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: e6f4c608d6306b149a33cb89e105d2ff, type: 2}
+      operatorCondition: 0
+  - toState: {fileID: 11400000, guid: 0ee9be18e6ddead4b8134de43a704e8b, type: 2}
+    conditions:
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: 07b39e6c9fa717c449a8416d8e5f828c, type: 2}
+      operatorCondition: 0

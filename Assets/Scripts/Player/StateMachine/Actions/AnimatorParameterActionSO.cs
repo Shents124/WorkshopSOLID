@@ -2,8 +2,7 @@ using System;
 using StateMachine.Core;
 using StateMachine.ScriptableObjects;
 using UnityEngine;
-
-[CreateAssetMenu(fileName = "AnimatorParameterAction", menuName = "State Machines/Actions/Set Animator Parameter")]
+[CreateAssetMenu(fileName = "AnimatorParameterAction", menuName = "State Machines/Player/Actions/Set Animator Parameter")]
 public class AnimatorParameterActionSO : StateActionSO
 {
     public ParameterType parameterType = default;
@@ -28,7 +27,6 @@ public class AnimatorParameterActionSO : StateActionSO
 public class AnimatorParameterAction : StateAction
 {
     private Animator _animator;
-    private PlayerController _playerController;
     private AnimatorParameterActionSO _originSO => (AnimatorParameterActionSO)base.OriginSO;
     private readonly int _parameterHash;
 
@@ -36,22 +34,15 @@ public class AnimatorParameterAction : StateAction
     {
         _parameterHash = parameterHash;
     }
-
-    public override void OnFixedUpdate()
-    {
-        
-    }
-
+    
     public override void Awake(StateMachine.Core.StateMachine stateMachine)
     {
         _animator = stateMachine.GetComponent<Animator>();
-        _playerController = stateMachine.GetComponent<PlayerController>();
     }
 
     public override void OnEnterState()
     {
-        _playerController.isDoneAnimation = false;
-        
+
         if (_originSO.whenToRun == SpecificMoment.OnEnterState)
             SetParameter();
     }
@@ -81,10 +72,5 @@ public class AnimatorParameterAction : StateAction
             default:
                 throw new ArgumentOutOfRangeException();
         }
-    }
-    
-    public override void OnUpdate()
-    {
-        
     }
 }

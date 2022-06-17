@@ -1,4 +1,5 @@
 ﻿using StateMachine.ScriptableObjects;
+using UnityEngine;
 
 namespace StateMachine.Core
 {
@@ -8,8 +9,8 @@ namespace StateMachine.Core
         internal StateMachine _stateMachine;
         internal StateTransition[] _transitions;
         internal StateAction[] _actions;
-        
-        internal State() {}
+
+        internal State() { }
 
         public State(StateSO originSo, StateMachine stateMachine, StateTransition[] transitions, StateAction[] actions)
         {
@@ -21,11 +22,13 @@ namespace StateMachine.Core
 
         public void OnStateEnter()
         {
-            void OnStateEnter(IStateComponent[] comps)
+            //Debug.Log(_originSO.name);
+            static void OnStateEnter(IStateComponent[] comps)
             {
-                for (int i = 0; i < comps.Length; i++)
-                    comps[i].OnEnterState();
+                foreach (var state in comps)
+                    state.OnEnterState();
             }
+
             OnStateEnter(_transitions);
             OnStateEnter(_actions);
         }
@@ -48,11 +51,12 @@ namespace StateMachine.Core
 
         public void OnStateExit()
         {
-            void OnStateExit(IStateComponent[] comps)
+            static void OnStateExit(IStateComponent[] comps)
             {
-                foreach (var t in comps)
-                    t.OnExitState();
+                foreach (var stateComponent in comps)
+                    stateComponent.OnExitState();
             }
+
             OnStateExit(_transitions);
             OnStateExit(_actions);
         }
@@ -62,10 +66,10 @@ namespace StateMachine.Core
             state = null;
             foreach (var stateTransition in _transitions)
             {
-                if(stateTransition.TryGetTransition(out state))
+                if (stateTransition.TryGetTransition(out state))
                     break;
             }
-            
+
             foreach (var stateTransition in _transitions)
             {
                 stateTransition.ClearConditionState();

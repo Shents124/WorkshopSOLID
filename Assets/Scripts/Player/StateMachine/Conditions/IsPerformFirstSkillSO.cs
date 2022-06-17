@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.StateMachine.Conditions
 {
-    [CreateAssetMenu(fileName = "IsPerformFirstSkillCondition", menuName = "State Machines/Conditions/Is Perform First Skill Condition")]
+    [CreateAssetMenu(fileName = "IsPerformFirstSkillCondition", menuName = "State Machines/Player/Conditions/Is Perform First Skill Condition")]
     public class IsPerformFirstSkillSO : StateConditionSO
     {
         protected override Condition CreateCondition()

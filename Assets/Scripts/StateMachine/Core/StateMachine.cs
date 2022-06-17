@@ -18,7 +18,7 @@ namespace StateMachine.Core
             _currentState = transitionTableSo.GetInitialState(this);
         }
 
-        private void Start()
+        private void OnEnable()
         {
             _currentState.OnStateEnter();
         }
