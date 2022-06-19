@@ -19,3 +19,8 @@ MonoBehaviour:
     - expectedResult: 0
       condition: {fileID: 11400000, guid: 6905bb7eb915a8e459f52866de86010d, type: 2}
       operatorCondition: 0
+  - toState: {fileID: 11400000, guid: 08d98fc66ea322b43ae7401e5dde7850, type: 2}
+    conditions:
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: c9d9ce5f5ab82a640ac594a4b3bca9dd, type: 2}
+      operatorCondition: 0

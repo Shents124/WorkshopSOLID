@@ -13,6 +13,8 @@ namespace Input
 
         private void OnEnable()
         {
+            inputReader.EnableInput();
+            
             inputReader.MoveEvent += OnMove;
             inputReader.NormalAttackEvent += OnStartedNormaAttack;
             inputReader.NormalAttackCanceledEvent += OnNormalAttackCanceled;
@@ -33,6 +35,12 @@ namespace Input
             inputReader.Skill2CanceledEvent -= OnSkill2Canceled;
         }
 
+        
+        public void DisableInput()
+        {
+            inputReader.DisableInput();
+        }
+        
         private void OnMove(float value) => HorizontalInput = value;
 
         private void OnStartedNormaAttack() => NormalAttack = true;

@@ -62,6 +62,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Swap"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1ae685a-71f0-4536-b9cf-cf3045aa5746"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""action"": ""Skill_2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f07c4ec0-c0f4-44ef-95ed-c2ae9c56b6b7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +162,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_PlayerController_NormalAttack = m_PlayerController.FindAction("NormalAttack", throwIfNotFound: true);
         m_PlayerController_Skill_1 = m_PlayerController.FindAction("Skill_1", throwIfNotFound: true);
         m_PlayerController_Skill_2 = m_PlayerController.FindAction("Skill_2", throwIfNotFound: true);
+        m_PlayerController_Swap = m_PlayerController.FindAction("Swap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerController_NormalAttack;
     private readonly InputAction m_PlayerController_Skill_1;
     private readonly InputAction m_PlayerController_Skill_2;
+    private readonly InputAction m_PlayerController_Swap;
     public struct PlayerControllerActions
     {
         private @GameInput m_Wrapper;
@@ -213,6 +235,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @NormalAttack => m_Wrapper.m_PlayerController_NormalAttack;
         public InputAction @Skill_1 => m_Wrapper.m_PlayerController_Skill_1;
         public InputAction @Skill_2 => m_Wrapper.m_PlayerController_Skill_2;
+        public InputAction @Swap => m_Wrapper.m_PlayerController_Swap;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -234,6 +257,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Skill_2.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSkill_2;
                 @Skill_2.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSkill_2;
                 @Skill_2.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSkill_2;
+                @Swap.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSwap;
+                @Swap.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSwap;
+                @Swap.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSwap;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -250,6 +276,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Skill_2.started += instance.OnSkill_2;
                 @Skill_2.performed += instance.OnSkill_2;
                 @Skill_2.canceled += instance.OnSkill_2;
+                @Swap.started += instance.OnSwap;
+                @Swap.performed += instance.OnSwap;
+                @Swap.canceled += instance.OnSwap;
             }
         }
     }
@@ -260,5 +289,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnNormalAttack(InputAction.CallbackContext context);
         void OnSkill_1(InputAction.CallbackContext context);
         void OnSkill_2(InputAction.CallbackContext context);
+        void OnSwap(InputAction.CallbackContext context);
     }
 }

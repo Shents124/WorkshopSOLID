@@ -15,11 +15,12 @@ namespace StateMachine.Core
 
         private void Awake()
         {
-            _currentState = transitionTableSo.GetInitialState(this);
+             //transitionTableSo.InitialState(this);
         }
 
         private void OnEnable()
         {
+            _currentState = transitionTableSo.GetInitialState(this);
             _currentState.OnStateEnter();
         }
 

@@ -39,6 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Enemy_1
+    uniqueID: 3973253605
+    locked: 0
+  - name: Enemy_2
+    uniqueID: 3988922777
+    locked: 0
+  - name: Enemy_3
+    uniqueID: 3758225587
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

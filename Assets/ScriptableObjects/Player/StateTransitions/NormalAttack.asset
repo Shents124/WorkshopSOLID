@@ -35,8 +35,14 @@ MonoBehaviour:
     - expectedResult: 0
       condition: {fileID: 11400000, guid: ed1df92229acd294685f420bb648ab28, type: 2}
       operatorCondition: 0
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: 2a47a202f30452b4aa5ed860615abe3b, type: 2}
+      operatorCondition: 0
   - toState: {fileID: 11400000, guid: 02038bdb26dd58b40a0362297e50929b, type: 2}
     conditions:
     - expectedResult: 0
       condition: {fileID: 11400000, guid: e6f4c608d6306b149a33cb89e105d2ff, type: 2}
+      operatorCondition: 0
+    - expectedResult: 0
+      condition: {fileID: 11400000, guid: 36271f4d16b2051499f956ff3e1fa4f8, type: 2}
       operatorCondition: 0

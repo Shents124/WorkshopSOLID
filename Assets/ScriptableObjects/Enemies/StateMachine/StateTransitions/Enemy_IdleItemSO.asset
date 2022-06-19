@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4582c7b02ff43fc9fe0778a780233a4, type: 3}
+  m_Name: Enemy_IdleItemSO
+  m_EditorClassIdentifier: 
+  fromState: {fileID: 11400000, guid: cc9cf4f41320ed649b3d64049b5a2e42, type: 2}
+  transitionItems:
+  - toState: {fileID: 11400000, guid: 341c5ff2cdc08304888970b76b9e5477, type: 2}
+    conditions:
+    - expectedResult: 1
+      condition: {fileID: 11400000, guid: d2ab9471f33b8c74da5046c3d34ce5e4, type: 2}
+      operatorCondition: 0

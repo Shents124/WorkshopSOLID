@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 200
   speed: 150
-  normalDame: 2
-  firstSkillDame: 2
+  normalDame: 10
+  firstSkillDame: 15
   timeCoolDownFirstSkill: 5
-  secondSkillDame: 4
+  secondSkillDame: 20
   timeCoolDownSecondSkill: 10
   knockBackValue: 1.5

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edaac84dc41f7564bb01867c0e14b8f4, type: 3}
   m_Name: InputReader
   m_EditorClassIdentifier: 
+  onEndGame: {fileID: 11400000, guid: 67d12a0737905034192ac40badfb7581, type: 2}

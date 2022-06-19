@@ -22,7 +22,6 @@ namespace StateMachine.Core
 
         public void OnStateEnter()
         {
-            //Debug.Log(_originSO.name);
             static void OnStateEnter(IStateComponent[] comps)
             {
                 foreach (var state in comps)

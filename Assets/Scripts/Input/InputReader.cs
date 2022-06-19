@@ -1,3 +1,4 @@
+using EventSO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,6 +8,8 @@ namespace Input
     [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
     public class InputReader : ScriptableObject, GameInput.IPlayerControllerActions
     {
+        public VoidEventSO onEndGame;
+        
         public event UnityAction<float> MoveEvent = delegate {  };
         public event UnityAction NormalAttackEvent = delegate {  };
         public event UnityAction NormalAttackCanceledEvent = delegate {  };
@@ -14,6 +17,7 @@ namespace Input
         public event UnityAction Skill1CanceledEvent = delegate {  };
         public event UnityAction Skill2Event = delegate {  };
         public event UnityAction Skill2CanceledEvent = delegate {  };
+        public event UnityAction SwapPlayerEvent = delegate {  };
 
         private GameInput _gameInput;
 
@@ -27,6 +31,12 @@ namespace Input
             _gameInput = new GameInput();
             _gameInput.Enable();
             _gameInput.PlayerController.SetCallbacks(this);
+            onEndGame.onEventRaised += DisableInput;
+        }
+
+        private void OnDisable()
+        {
+            onEndGame.onEventRaised -= DisableInput;
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -71,6 +81,21 @@ namespace Input
                     Skill2CanceledEvent.Invoke();
                     break;
             }
+        }
+
+        public void OnSwap(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                SwapPlayerEvent?.Invoke();
+        }
+
+        public void EnableInput()
+        {
+            _gameInput.Enable();
+        }
+        public void DisableInput()
+        {
+            _gameInput.Disable();
         }
     }
 }

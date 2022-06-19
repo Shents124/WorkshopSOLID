@@ -1,5 +1,6 @@
-﻿using System.Collections;
+﻿using System.Runtime.CompilerServices;
 using CombatSystem;
+using EventSO;
 using UnityEngine;
 
 namespace Player
@@ -7,15 +8,25 @@ namespace Player
     public class PlayerData : MonoBehaviour
     {
         [SerializeField] private PlayerDataSO playerDataSo;
-        [SerializeField] private VoidEventSO onPerformFirstSkill;
+        [SerializeField] private AttackBuffSO attackBuffSo;
+        [SerializeField] private FloatEventSO onCountDownFirstSkill;
+        [SerializeField] private FloatEventSO onCountDownSecondSkill;
+        [SerializeField] private VoidEventSO onHealthChange;
+        [SerializeField] private IntEventSO onHeal;
         
         private int _currentHp;
-        private int _attackBuff;
-        
-        public int Speed => playerDataSo.Speed;
+        private bool _canTakeDame;
+        private float _currentTimeCoolDownFirstSkill;
+        private float _currentTimeCoolDownSecondSkill;
 
-        public float TimeCoolDownFirstSkill{ get; private set; }
-        public float TimeCoolDownSecondSkill { get; private set; }
+        public int CurrentHp => _currentHp <= 0 ? 0 : _currentHp;
+        public int MaxHp => playerDataSo.MaxHp;
+        public int AttackBuff => attackBuffSo.AttackBuff;
+        public int Speed => playerDataSo.Speed;
+        public float CurrentTimeCoolDownFirstSkill => _currentTimeCoolDownFirstSkill;
+        public float CurrentTimeCoolDownSecondSkill => _currentTimeCoolDownSecondSkill;
+        public float TimeCoolDownFirstSkill => playerDataSo.TimeCoolDownFirstSkill;
+        public float TimeCoolDownSecondSkill => playerDataSo.TimeCoolDownSecondSkill;
         public float KnockBackValue => playerDataSo.KnockBackValue;
         public bool IsAnimationFinish { get; private set; }
         public bool IsHurt { get; private set; }
@@ -25,77 +36,88 @@ namespace Player
         {
             _currentHp = playerDataSo.MaxHp;
             IsDeath = false;
+            _canTakeDame = true;
+            onHeal.onRaisedEvent += Heal;
         }
 
-        public int CalculateNormalDame() => playerDataSo.NormalDame + _attackBuff;
-        public int CalculateFirstSkillDame() => playerDataSo.FirstSkillDame + _attackBuff;
-        public int CalculateSecondSkillDame() => playerDataSo.SecondSkillDame + _attackBuff;
+        private void OnDisable()
+        {
+            onHeal.onRaisedEvent -= Heal;
+        }
+
+        private void Update()
+        {
+            CountDownFirstSkill();
+            CountDownSecondSkill();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int CalculateNormalDame() => playerDataSo.NormalDame + attackBuffSo.AttackBuff;
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int CalculateFirstSkillDame() => playerDataSo.FirstSkillDame + attackBuffSo.AttackBuff;
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int CalculateSecondSkillDame() => playerDataSo.SecondSkillDame + attackBuffSo.AttackBuff;
         
         public void OnHurt(Damager damager, Damageable damageable, int dame, float knockBackValue)
         {
+            if(_canTakeDame == false)
+                return;
+            
             _currentHp -= dame;
-            if (_currentHp <= 0)
+            onHealthChange.RaiseEvent();
+            IsHurt = true;
+            if (_currentHp > 0)
             {
-                damageable.onDie?.Invoke(damager, damageable, dame, knockBackValue);
-                IsDeath = true;
+                return;
             }
-                
-            else
-                IsHurt = true;
+
+            damageable.onDie?.Invoke(damager, damageable, dame, knockBackValue);
+            IsDeath = true;
+            _canTakeDame = false;
         }
 
         public void ResetHurt() => IsHurt = false;
 
-        public void Heal(int value)
+        private void Heal(int value)
         {
             _currentHp += value;
             _currentHp = Mathf.Clamp(_currentHp, 0, playerDataSo.MaxHp);
-        }
-
-        public void BuffAttack(int attackBuff, float timeCoolDownAttackBuff)
-        {
-            _attackBuff = attackBuff;
-            StartCoroutine(CountDownAttackBuff(timeCoolDownAttackBuff));
+            onHealthChange.RaiseEvent();
         }
         
-        IEnumerator CountDownAttackBuff(float timeCoolDownAttackBuff)
-        {
-            yield return new WaitForSeconds(timeCoolDownAttackBuff);
-            _attackBuff = 0;
-        }
-
         public void PerformFirstSkill()
         {
-            TimeCoolDownFirstSkill = playerDataSo.TimeCoolDownFirstSkill;
-            onPerformFirstSkill.RaiseEvent();
-            StartCoroutine(CountDownTimeFirstSkill());
+            _currentTimeCoolDownFirstSkill = playerDataSo.TimeCoolDownFirstSkill;
         }
 
         public void PerformSecondSkill()
         {
-            TimeCoolDownSecondSkill = playerDataSo.TimeCoolDownSecondSkill;
-            StartCoroutine(CountDownTimeSecondSkill());
+            _currentTimeCoolDownSecondSkill = playerDataSo.TimeCoolDownSecondSkill;
         }
 
-        IEnumerator CountDownTimeFirstSkill()
+        private void CountDownFirstSkill()
         {
-            while (TimeCoolDownFirstSkill >= 0)
-            {
-                TimeCoolDownFirstSkill -= Time.deltaTime;
-                yield return null;
-            }
-
-            TimeCoolDownFirstSkill = 0;
+            CountDownTimeSkill(ref _currentTimeCoolDownFirstSkill);
+            onCountDownFirstSkill.RaiseEvent(_currentTimeCoolDownFirstSkill);
         }
-        IEnumerator CountDownTimeSecondSkill()
-        {
-            while (TimeCoolDownSecondSkill >= 0)
-            {
-                TimeCoolDownSecondSkill -= Time.deltaTime;
-                yield return null;
-            }
 
-            TimeCoolDownSecondSkill = 0;
+        private void CountDownSecondSkill()
+        {
+            CountDownTimeSkill(ref _currentTimeCoolDownSecondSkill);
+            onCountDownSecondSkill.RaiseEvent(_currentTimeCoolDownSecondSkill);
+        }
+        
+        private static void CountDownTimeSkill(ref float timeCoolDown)
+        {
+            if (timeCoolDown <= 0)
+            {
+                timeCoolDown = 0;
+                return;
+            }
+            
+            timeCoolDown -= Time.deltaTime;
         }
         
         public void StartAnimation() => IsAnimationFinish = false;

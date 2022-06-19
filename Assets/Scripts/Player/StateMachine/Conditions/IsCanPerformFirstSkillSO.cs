@@ -23,7 +23,7 @@ namespace Player.StateMachine.Conditions
 
         protected override bool Statement()
         {
-            return _playerData.TimeCoolDownFirstSkill <= 0;
+            return _playerData.CurrentTimeCoolDownFirstSkill <= 0;
         }
     }
 }
